@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.domain.Board;
+import com.example.demo.domain.BoardListMapping;
 import com.example.demo.repository.BoardRepository;
 
 @Service
@@ -18,9 +19,9 @@ public class BoardService {
 		return boardRepository.findById(boardId).orElseThrow();
 	}
 	
-	public List<Board> getBoardList() {
+	public List<BoardListMapping> getBoardList() {
 		
-		return boardRepository.findAll();
+		return boardRepository.findAllBy();
 	}
 	
 	public String insertBoard(Board board) {

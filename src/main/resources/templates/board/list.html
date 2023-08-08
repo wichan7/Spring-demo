@@ -1,5 +1,19 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
 
-BoardList
+<th:block layout:fragment="content">
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+		</tr>
+		<tr th:each="board : ${boardList}">
+			<td th:text="${board.getBoardId()}">id</td>
+			<td th:text="${board.getTitle()}">title</td>
+		</tr>
+	</table>
+</th:block>
 
-<span th:text="${boards}">no data</span>
+</html>

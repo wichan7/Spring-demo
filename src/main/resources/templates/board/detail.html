@@ -1,7 +1,12 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
 
-BoardDetail
+<th:block layout:fragment="content">
+	<div th:text="${board.getBoardId()}">no</div>
+	<div th:text="${board.getTitle()}">title</div>
+	<div th:text="${board.getContents()}">content</div>
+</th:block>
 
-<div th:text="${board.getBoardId()}">no</div>
-<div th:text="${board.getTitle()}">title</div>
-<div th:text="${board.getContents()}">content</div>
+</html>
