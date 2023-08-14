@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:fragment="headerFragment">
-  <!-- contents of header -->
+	<!-- contents of header -->
+	<header>
+		<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+		    <!-- navbar brand -->
+			<a class="navbar-brand" href="/">wic-webdemo</a>
+			
+			<!-- reactive button (if mobile) -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!-- navbar contents -->
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="/">Home</a>
+					</li>
+					<li class="nav-item"><a class="nav-link"
+						href="/board/list">Board</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">My Page</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 </th:block>
 </html>

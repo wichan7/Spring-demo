@@ -4,16 +4,35 @@
 	layout:decorate="layout/default_layout">
 
 <th:block layout:fragment="content">
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-		</tr>
-		<tr th:each="board : ${boardList}">
-			<td th:text="${board.getBoardId()}">id</td>
-			<td th:text="${board.getTitle()}">title</td>
-		</tr>
-	</table>
+	<div class="container-fluid bg-light">
+		<div style="height: 15px;"></div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th style="width: 5%">id</th>
+							<th style="width: 60%">title</th>
+							<th style="width: 15%">writer</th>
+							<th style="width: 15%">createdAt</th>
+							<th style="width: 5%">views</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="board : ${boardList}">
+							<td th:text="${board.getBoardId()}"></td>
+							<td th:text="${board.getTitle()}"></td>
+							<td th:text="${board.getWriter()}"></td>
+							<td th:text="${board.getCreatedAt()}"></td>
+							<td th:text="${board.getViews()}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
 </th:block>
 
 </html>

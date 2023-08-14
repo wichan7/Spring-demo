@@ -4,9 +4,12 @@
 	layout:decorate="layout/default_layout">
 
 <th:block layout:fragment="content">
-	<div th:text="${board.getBoardId()}">no</div>
-	<div th:text="${board.getTitle()}">title</div>
-	<div th:text="${board.getContents()}">content</div>
+	<div th:text="${board.getBoardId()}"></div>
+	<div th:text="${board.getTitle()}"></div>
+	<div th:text="${board.getContent()}"></div>
+	<div th:text="${board.getWriter()}"></div>
+	<div th:text="${board.getViews()}"></div>
+	<div th:text="${board.getCreatedAt()}"></div>
 </th:block>
 
 </html>
