@@ -24,7 +24,8 @@ public class BoardService {
 		return boardRepository.findAllBy();
 	}
 	
-	public String insertBoard(Board board) {
-		return "";
+	public Board insertBoard(Board board) {
+		
+		return boardRepository.save(board);
 	}
 }

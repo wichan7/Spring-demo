@@ -14,12 +14,8 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public ModelAndView mainPage() {
-		
-		log.info("mainPage");
-
 		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("name", "wichan");
+
 		mav.setViewName("/main");
 		
 		return mav;

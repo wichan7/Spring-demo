@@ -5,7 +5,7 @@
 
 <th:block layout:fragment="content">
 	<div class="container-fluid bg-light">
-		<div style="height: 15px;"></div>
+		<div class="pb-5"></div>
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
@@ -22,13 +22,23 @@
 					<tbody>
 						<tr th:each="board : ${boardList}">
 							<td th:text="${board.getBoardId()}"></td>
-							<td th:text="${board.getTitle()}"></td>
+							<td>
+							    <a th:href="@{/board/{id}(id=${board.getBoardId()})}" th:text="${board.getTitle()}"></a>
+							</td>
 							<td th:text="${board.getWriter()}"></td>
-							<td th:text="${board.getCreatedAt()}"></td>
+							<td th:text="${#dates.format(board.getCreatedAt(), 'yy.MM.dd HH:mm')}"></td>
 							<td th:text="${board.getViews()}"></td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 pb-2">
+				<a href="./register" class="btn btn-info">Register</a>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

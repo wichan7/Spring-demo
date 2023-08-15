@@ -20,6 +20,7 @@ public class WebSecurityConfig {
 	@Bean
 	SecurityFilterChain appSecurity(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
 	    http
+	        .csrf(csrf -> csrf.disable())
 	        .authorizeHttpRequests((authorize) -> authorize
 	            .requestMatchers(mvc.pattern("/")).permitAll()
 	            .requestMatchers(mvc.pattern("/assets/**")).permitAll()

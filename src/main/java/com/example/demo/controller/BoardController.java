@@ -2,10 +2,13 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.domain.Board;
 import com.example.demo.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -45,19 +48,10 @@ public class BoardController {
 	}
 	
 	@PostMapping("/board/register")
-	public ModelAndView saveBoard() {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.setViewName("/board/list");
-		return mav;
-	}
-	
-	@PostMapping("/board/delete/{id}")
-	public ModelAndView deleteBoard(@PathVariable("id") Long id) {
-		ModelAndView mav = new ModelAndView();
-			
-		mav.setViewName("/board/list");
-		return mav;
+	public String saveBoard(@ModelAttribute Board board) {
+		Board resultBoard = boardService.insertBoard(board);
+		log.debug(resultBoard.toString());
+		return "redirect:/board/list";
 	}
 	
 }
