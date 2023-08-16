@@ -49,8 +49,13 @@ public class BoardController {
 	
 	@PostMapping("/board/register")
 	public String saveBoard(@ModelAttribute Board board) {
-		Board resultBoard = boardService.insertBoard(board);
-		log.debug(resultBoard.toString());
+		try {
+			boardService.insertBoard(board);
+		} catch(Exception e) {
+			log.error(e.toString());
+			return "redirect:/error";
+		}
+		
 		return "redirect:/board/list";
 	}
 	

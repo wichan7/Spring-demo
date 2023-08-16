@@ -1,3 +1,18 @@
 body {
-    padding-top: 56px;
+  padding-top: 56px;
+}
+
+.board .title {
+  font-size: 2em;
+}
+.board .meta {
+  display: flex;
+}
+.board .meta * {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.board .content {
+  
 }

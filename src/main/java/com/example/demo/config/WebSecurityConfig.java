@@ -23,6 +23,8 @@ public class WebSecurityConfig {
 	        .csrf(csrf -> csrf.disable())
 	        .authorizeHttpRequests((authorize) -> authorize
 	            .requestMatchers(mvc.pattern("/")).permitAll()
+	            .requestMatchers(mvc.pattern("/favicon.ico")).permitAll()
+	            .requestMatchers(mvc.pattern("/error")).permitAll()
 	            .requestMatchers(mvc.pattern("/assets/**")).permitAll()
 	            .requestMatchers(mvc.pattern("/board/**")).permitAll()
 	            .anyRequest().authenticated()

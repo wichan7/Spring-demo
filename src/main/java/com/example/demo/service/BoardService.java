@@ -4,26 +4,34 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.domain.Board;
 import com.example.demo.domain.BoardListMapping;
 import com.example.demo.repository.BoardRepository;
 
-@Service
-public class BoardService {
-	@Autowired
-	private BoardRepository boardRepository;
-	
-	public Board getBoardDetail(Long boardId) {
+import lombok.RequiredArgsConstructor;
 
-		return boardRepository.findById(boardId).orElseThrow();
+@Service
+@RequiredArgsConstructor
+public class BoardService {
+	private final BoardRepository boardRepository;
+	
+	@Transactional
+	public Board getBoardDetail(Long boardId) {
+		Board board = boardRepository.findById(boardId).orElseThrow();
+		board.setViews(board.getViews() + 1);
+		
+		return board;
 	}
 	
+	@Transactional
 	public List<BoardListMapping> getBoardList() {
 		
 		return boardRepository.findAllBy();
 	}
 	
+	@Transactional
 	public Board insertBoard(Board board) {
 		
 		return boardRepository.save(board);

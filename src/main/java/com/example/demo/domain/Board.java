@@ -12,7 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,22 +30,23 @@ public class Board implements Serializable {
 	
 	@CreationTimestamp
 	private java.sql.Timestamp createdAt;
-	
+
+	@NotBlank
 	@Column(length=100, nullable=false)
 	private String title;
 
-	@Column(length=4000, nullable=false)
+	@NotBlank
+	@Column(nullable=false)
 	private String content;
 
 	private Long writer;
 	
 	@ColumnDefault("0")
+	@Column(nullable=false)
 	private Long views;
 	
 	@PrePersist
 	public void prePersist() {
 		this.views = this.views == null ? 0 : this.views;
-		this.title = "".equals(this.title) ? null : this.title;
-		this.content = "".equals(this.content) ? null : this.content;
 	}
 }

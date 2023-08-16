@@ -5,13 +5,13 @@
 
 <th:block layout:fragment="content">
     <style>
-        .note-editor {
-            margin-bottom: 12px;
-        }
+    .note-editor {
+	   margin-bottom: 12px;
+    }
     </style>
-    <script>
+	<script>
         $(function () {
-            $('#summernote').summernote({
+            $('#content').summernote({
                 lang: 'ko-KR',
                 placeholder: 'Write content here',
                 height: 200,
@@ -26,28 +26,47 @@
                     ['view', ['help']]
                 ]
             });
+            
+            // validation
+            $('#register').on('submit', function(e) {
+                if($('#title').val() === "") {
+                    alert('title is empty, fill it!');
+                    e.preventDefault();
+                }
+                if($('#content').summernote('isEmpty')) {
+                    alert('contents is empty, fill it!');
+                    e.preventDefault();
+                }
+            });
+            
         })
+        
+
     </script>
-    <div class="container-fluid bg-light">
-        <div class="pb-5"></div>
-        <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
-                <form method="post" action="/board/register">
-                    <div class="input-group mb-2">
-                        <span class="input-group-text">Title</span>
-                        <input type="text" class="form-control" name="title" placeholder="Write title here">
-                    </div>
-                    <textarea id="summernote" name="content"></textarea>
-                    <button type="submit" class="btn btn-info mb-2">Register</button>
-                </form>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div>
-    <!-- load editor -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+	<div class="container-fluid bg-light">
+		<div class="pb-5"></div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form id="register" method="post" action="/board/register">
+					<div class="input-group mb-2">
+						<span class="input-group-text">Title</span> <input id="title"
+							name="title" type="text" class="form-control"
+							placeholder="Write title here">
+					</div>
+					<textarea id="content" name="content"></textarea>
+					<button type="submit" class="btn btn-info mb-2">Register</button>
+				</form>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+	</div>
+	<!-- load editor -->
+	<link
+		href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
+		rel="stylesheet">
+	<script
+		src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </th:block>
 
 </html>
