@@ -1,5 +1,15 @@
+html, body {
+    height: 100%;
+}
+
 body {
   padding-top: 56px;
+}
+
+/* bootstrap override */
+.form-control {
+    padding: .5rem .75rem;
+    margin-bottom: 10px;
 }
 
 .board .title {
@@ -13,6 +23,24 @@ body {
   padding-right: 30px;
 }
 
-.board .content {
-  
+.middle-wrapper {
+    display: flex;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-login {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-register {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
 }

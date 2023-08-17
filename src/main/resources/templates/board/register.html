@@ -4,11 +4,11 @@
 	layout:decorate="layout/default_layout">
 
 <th:block layout:fragment="content">
-    <style>
-    .note-editor {
-	   margin-bottom: 12px;
-    }
-    </style>
+	<style>
+.note-editor {
+	margin-bottom: 12px;
+}
+</style>
 	<script>
         $(function () {
             $('#content').summernote({
@@ -40,26 +40,23 @@
             });
             
         })
-        
-
     </script>
-	<div class="container-fluid bg-light">
-		<div class="pb-5"></div>
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<form id="register" method="post" action="/board/register">
-					<div class="input-group mb-2">
-						<span class="input-group-text">Title</span> <input id="title"
-							name="title" type="text" class="form-control"
-							placeholder="Write title here">
-					</div>
-					<textarea id="content" name="content"></textarea>
-					<button type="submit" class="btn btn-info mb-2">Register</button>
-				</form>
-			</div>
-			<div class="col-md-2"></div>
+	<div class="pb-5"></div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<form id="register" method="post" action="/board/register">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<div class="input-group mb-2">
+					<span class="input-group-text">Title</span> <input id="title"
+						name="title" type="text" class="form-control"
+						placeholder="Write title here">
+				</div>
+				<textarea id="content" name="content"></textarea>
+				<button type="submit" class="btn btn-info mb-2">Register</button>
+			</form>
 		</div>
+		<div class="col-md-2"></div>
 	</div>
 	<!-- load editor -->
 	<link

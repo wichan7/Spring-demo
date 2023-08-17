@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="~{fragment/head :: headFragment}"></th:block>
-<body>
+<body class="container-fluid bg-light">
     <th:block th:replace="~{fragment/header :: headerFragment}"></th:block>
 	<th:block layout:fragment="content"></th:block>
 	<th:block th:replace="~{fragment/footer :: footerFragment}"></th:block>

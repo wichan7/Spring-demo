@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.domain.Board;
+import com.example.demo.domain.Member;
 import com.example.demo.service.BoardService;
+import com.example.demo.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,46 +19,31 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class BoardController {
+public class MemberController {
+	private final MemberService memberService;
 	
-	private final BoardService boardService;
-	
-	@GetMapping("/board/list")
-	public ModelAndView showList() {
+	@GetMapping("/member/login")
+	public ModelAndView loginPage() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.addObject("boardList", boardService.getBoardList());
-		mav.setViewName("/board/list");
+		mav.setViewName("/member/login");
 		return mav;
 	}
 	
-	@GetMapping("/board/{id}")
-	public ModelAndView showDetail(@PathVariable("id") Long id) {
+	@GetMapping("/member/register")
+	public ModelAndView registerPage() {
 		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("board", boardService.getBoardDetail(id));
-		mav.setViewName("/board/detail");
+
+		mav.setViewName("/member/register");
 		return mav;
 	}
 	
-	@GetMapping("/board/register")
-	public ModelAndView showRegister() {
+	@PostMapping("/member/register")
+	public ModelAndView register(@ModelAttribute Member member) {
 		ModelAndView mav = new ModelAndView();
+		memberService.insertMember(member);
+		mav.setViewName("/member/login");
 		
-		mav.setViewName("/board/register");
 		return mav;
 	}
-	
-	@PostMapping("/board/register")
-	public String saveBoard(@ModelAttribute Board board) {
-		try {
-			boardService.insertBoard(board);
-		} catch(Exception e) {
-			log.error(e.toString());
-			return "redirect:/error";
-		}
-		
-		return "redirect:/board/list";
-	}
-	
 }
