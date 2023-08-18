@@ -23,7 +23,7 @@
 						<td th:text="${board.getBoardId()}"></td>
 						<td><a th:href="@{/board/{id}(id=${board.getBoardId()})}"
 							th:text="${board.getTitle()}"></a></td>
-						<td th:text="${board.getWriter()}"></td>
+						<td th:text="${board.getNickname()}"></td>
 						<td
 							th:text="${#dates.format(board.getCreatedAt(), 'yy.MM.dd HH:mm')}"></td>
 						<td th:text="${board.getViews()}"></td>

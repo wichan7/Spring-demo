@@ -41,8 +41,20 @@ public class MemberController {
 	@PostMapping("/member/register")
 	public ModelAndView register(@ModelAttribute Member member) {
 		ModelAndView mav = new ModelAndView();
-		memberService.insertMember(member);
-		mav.setViewName("/member/login");
+		if (memberService.registerMember(member)) {
+			mav.setViewName("/member/login");
+		} else {
+			mav.setViewName("/member/register");
+		}
+		
+		return mav;
+	}
+	
+	@GetMapping("/member/mypage")
+	public ModelAndView myPage() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("/member/mypage");
 		
 		return mav;
 	}

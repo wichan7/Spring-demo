@@ -21,26 +21,21 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class MemberService implements UserDetailsService {
+public class MemberService {
 
 	private final MemberRepository memberRepository;
 	private final BCryptPasswordEncoder bcryptPasswordEncoder;
 	
 	@Transactional
-	public Member insertMember(Member member) {
-		member.setUpw(bcryptPasswordEncoder.encode(member.getUpw()));
-		return memberRepository.save(member);
-	}
-
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Member member = memberRepository.findByUid(username);
-		
-		if (member != null) {
-			return new MemberDetails(member);
+	public boolean registerMember(Member member) {
+		if (memberRepository.findByUid(member.getUid()) != null) {
+			
+			return false;
 		}
+		member.setUpw(bcryptPasswordEncoder.encode(member.getUpw()));
+		memberRepository.save(member);
 		
-		return null;
+		return true;
 	}
 	
 }

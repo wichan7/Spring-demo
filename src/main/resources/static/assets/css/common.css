@@ -29,16 +29,10 @@ body {
     text-align: center;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
-.form-login {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-}
-
-.form-register {
+.middle-wrapper > form {
     width: 100%;
     max-width: 330px;
     padding: 15px;

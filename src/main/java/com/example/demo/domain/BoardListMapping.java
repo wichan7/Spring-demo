@@ -8,7 +8,7 @@ public interface BoardListMapping {
 	
 	String getTitle();
 	
-	Long getWriter();
+	String getNickname();
 	
 	Long getViews();
 	

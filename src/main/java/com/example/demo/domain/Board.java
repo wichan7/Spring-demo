@@ -41,6 +41,8 @@ public class Board implements Serializable {
 
 	private Long writer;
 	
+	private String nickname;
+	
 	@ColumnDefault("0")
 	@Column(nullable=false)
 	private Long views;

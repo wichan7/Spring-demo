@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +23,7 @@ public class BoardController {
 	private final BoardService boardService;
 	
 	@GetMapping("/board/list")
-	public ModelAndView showList() {
+	public ModelAndView listPage() {
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("boardList", boardService.getBoardList());
@@ -31,7 +32,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/{id}")
-	public ModelAndView showDetail(@PathVariable("id") Long id) {
+	public ModelAndView detailPage(@PathVariable("id") Long id) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("board", boardService.getBoardDetail(id));
@@ -40,7 +41,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/register")
-	public ModelAndView showRegister() {
+	public ModelAndView registerPage() {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("/board/register");
@@ -48,11 +49,10 @@ public class BoardController {
 	}
 	
 	@PostMapping("/board/register")
-	public String saveBoard(@ModelAttribute Board board) {
+	public String register(@ModelAttribute Board board) {
 		try {
 			boardService.insertBoard(board);
 		} catch(Exception e) {
-			log.error(e.toString());
 			return "redirect:/error";
 		}
 		
