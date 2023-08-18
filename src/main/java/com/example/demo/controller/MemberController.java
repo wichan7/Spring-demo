@@ -54,6 +54,7 @@ public class MemberController {
 	public ModelAndView myPage() {
 		ModelAndView mav = new ModelAndView();
 		
+		mav.addObject("member", memberService.getCurrentMember());
 		mav.setViewName("/member/mypage");
 		
 		return mav;

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="layout/default_layout">
+
+<th:block layout:fragment="content">
+	<div class="pb-5"></div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<div th:text="${member.getId()}"></div>
+			<div th:text="${member.getCreatedAt()}"></div>
+			<div th:text="${member.getUid()}"></div>
+			<div th:text="${member.getUpw()}"></div>
+			<div th:text="${member.getNickname()}"></div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</th:block>
+
+</html>

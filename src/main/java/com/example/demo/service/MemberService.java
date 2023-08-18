@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,6 +39,13 @@ public class MemberService {
 		return true;
 	}
 	
+	@Transactional
+	public Member getCurrentMember() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Member member = ((MemberDetails)principal).getMember();
+		
+		return member;
+	}
 }
 
 
