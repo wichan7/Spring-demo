@@ -8,11 +8,22 @@
 	<div class="row">
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
-			<div th:text="${member.getId()}"></div>
-			<div th:text="${member.getCreatedAt()}"></div>
-			<div th:text="${member.getUid()}"></div>
-			<div th:text="${member.getUpw()}"></div>
-			<div th:text="${member.getNickname()}"></div>
+		    <table class="table table-hover bg-white">
+		        <tbody>
+		            <tr>
+		                <td>ID</td>
+		                <td th:text="${member.getUid()}"></td>
+		            </tr>
+		            <tr>
+                        <td>Nickname</td>
+                        <td th:text="${member.getNickname()}"></td>
+                    </tr>
+                    <tr>
+                        <td>CreatedAt</td>
+                        <td th:text="${#dates.format(member.getCreatedAt(), 'yyyy.MM.dd HH:mm')}"></td>
+                    </tr>
+		        </tbody>
+		    </table>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
