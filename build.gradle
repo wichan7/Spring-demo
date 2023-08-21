@@ -24,21 +24,29 @@ repositories {
 }
 
 dependencies {
+    // spring libraries
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-web-services'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
-    //  Temporary explicit version to fix Thymeleaf bug
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.0.0'
-	
-	compileOnly 'org.springframework.boot:spring-boot-devtools'
+	// lombok
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+	// security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	// Temporary explicit version to fix Thymeleaf bug
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6:3.1.1.RELEASE'
+    // ThymeLeaf
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.0.0'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	// batch job, scheduler
+	implementation 'org.springframework.boot:spring-boot-starter-batch'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	
+	// dev
+	compileOnly 'org.springframework.boot:spring-boot-devtools'
 	
 	// tests
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
