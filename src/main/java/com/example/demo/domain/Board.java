@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
 @Table(name = "board")

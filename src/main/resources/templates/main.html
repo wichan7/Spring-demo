@@ -12,10 +12,7 @@
 				<div class="card-body">
 					<h5 class="card-title">오늘의 이슈</h5>
 					<ol>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
+					   <li th:each="board : ${dailyTop}"><a th:href="@{/board/{id}(id=${board.getBoardId()})}" th:text="${board.getTitle()}"></a></li>
 					</ol>
 				</div>
 			</div>
@@ -25,10 +22,7 @@
 				<div class="card-body">
 					<h5 class="card-title">주간 이슈</h5>
 					<ol>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
+						<li th:each="board : ${weeklyTop}"><a th:href="@{/board/{id}(id=${board.getBoardId()})}" th:text="${board.getTitle()}"></a></li>
 					</ol>
 				</div>
 			</div>
@@ -38,10 +32,7 @@
 				<div class="card-body">
 					<h5 class="card-title">월간 이슈</h5>
 					<ol>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
-						<li><a href="#">뿌슝 빠숭 삐슝???</a></li>
+						<li th:each="board : ${monthlyTop}"><a th:href="@{/board/{id}(id=${board.getBoardId()})}" th:text="${board.getTitle()}"></a></li>
 					</ol>
 				</div>
 			</div>

@@ -4,18 +4,23 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.example.demo.service.BoardService;
 
-@Slf4j
+import lombok.RequiredArgsConstructor;
+
 @Controller
 @RequiredArgsConstructor
 public class HomeController {
 	
+	private final BoardService boardService;
+	
 	@GetMapping("/")
 	public ModelAndView mainPage() {
 		ModelAndView mav = new ModelAndView();
-
+		
+		mav.addObject("dailyTop", boardService.getBoardListDailyTop());
+		mav.addObject("weeklyTop", boardService.getBoardListWeeklyTop());
+		mav.addObject("monthlyTop", boardService.getBoardListMonthlyTop());
 		mav.setViewName("/main");
 		
 		return mav;
