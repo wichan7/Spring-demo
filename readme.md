@@ -3,9 +3,9 @@ Authored by wichan7 (github)
 
 # Project Settings
 Server Framework: Spring Boot 4  
-Web Framework: bootstrap 5.3.1
+Web Framework: bootstrap 5.3.1  
 web/was: Apache Tomcat  
 DB & ORM: MariaDB / JPA  
-View Engine: Thymeleaf  
+Template Engine: Thymeleaf  
 Java: JDK 20  
 IDE: Eclipse 2023.06  
