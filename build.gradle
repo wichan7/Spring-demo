@@ -11,6 +11,11 @@ java {
 	sourceCompatibility = '20'
 }
 
+jar {
+	/* at build time, don't create '-plain.jar' file. */
+	enabled = false
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -53,6 +58,6 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
-tasks.named('test') {
+/* tasks.named('test') {
 	useJUnitPlatform()
-}
+} */

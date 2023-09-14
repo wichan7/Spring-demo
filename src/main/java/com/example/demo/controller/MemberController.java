@@ -16,40 +16,40 @@ import lombok.RequiredArgsConstructor;
 public class MemberController {
 	private final MemberService memberService;
 	
-	@GetMapping("/member/login")
+	@GetMapping("member/login")
 	public ModelAndView loginPage() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("/member/login");
+		mav.setViewName("member/login");
 		return mav;
 	}
 	
-	@GetMapping("/member/register")
+	@GetMapping("member/register")
 	public ModelAndView registerPage() {
 		ModelAndView mav = new ModelAndView();
 
-		mav.setViewName("/member/register");
+		mav.setViewName("member/register");
 		return mav;
 	}
 	
-	@PostMapping("/member/register")
+	@PostMapping("member/register")
 	public ModelAndView register(@ModelAttribute Member member) {
 		ModelAndView mav = new ModelAndView();
 		if (memberService.registerMember(member)) {
-			mav.setViewName("/member/login");
+			mav.setViewName("member/login");
 		} else {
-			mav.setViewName("/member/register");
+			mav.setViewName("member/register");
 		}
 		
 		return mav;
 	}
 	
-	@GetMapping("/member/mypage")
+	@GetMapping("member/mypage")
 	public ModelAndView myPage() {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("member", memberService.getCurrentMember());
-		mav.setViewName("/member/mypage");
+		mav.setViewName("member/mypage");
 		
 		return mav;
 	}

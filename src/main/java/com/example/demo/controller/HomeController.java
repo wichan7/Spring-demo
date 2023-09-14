@@ -14,23 +14,24 @@ public class HomeController {
 	
 	private final BoardService boardService;
 	
-	@GetMapping("/")
+	@GetMapping("")
 	public ModelAndView mainPage() {
 		ModelAndView mav = new ModelAndView();
 		
+		System.out.println(System.getProperty("spring.profiles.active"));
 		mav.addObject("dailyTop", boardService.getBoardListDailyTop());
 		mav.addObject("weeklyTop", boardService.getBoardListWeeklyTop());
 		mav.addObject("monthlyTop", boardService.getBoardListMonthlyTop());
-		mav.setViewName("/main");
+		mav.setViewName("main");
 		
 		return mav;
 	}
 	
-	@GetMapping("/error")
+	@GetMapping("error")
 	public ModelAndView errorPage() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("/error");
+		mav.setViewName("error");
 		
 		return mav;
 	}

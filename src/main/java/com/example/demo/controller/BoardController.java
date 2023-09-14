@@ -18,33 +18,33 @@ public class BoardController {
 	
 	private final BoardService boardService;
 	
-	@GetMapping("/board/list")
+	@GetMapping("board/list")
 	public ModelAndView listPage() {
 		ModelAndView mav = new ModelAndView();
 
 		mav.addObject("boardList", boardService.getBoardList());
-		mav.setViewName("/board/list");
+		mav.setViewName("board/list");
 		return mav;
 	}
 	
-	@GetMapping("/board/{id}")
+	@GetMapping("board/{id}")
 	public ModelAndView detailPage(@PathVariable("id") Long id) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("board", boardService.getBoardDetail(id));
-		mav.setViewName("/board/detail");
+		mav.setViewName("board/detail");
 		return mav;
 	}
 	
-	@GetMapping("/board/register")
+	@GetMapping("board/register")
 	public ModelAndView registerPage() {
 		ModelAndView mav = new ModelAndView();
 		
-		mav.setViewName("/board/register");
+		mav.setViewName("board/register");
 		return mav;
 	}
 	
-	@PostMapping("/board/register")
+	@PostMapping("board/register")
 	public String register(@ModelAttribute Board board) {
 		try {
 			boardService.insertBoard(board);
